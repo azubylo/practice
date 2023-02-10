@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "f50e16d0-ac74-4065-8af2-c86a0ebeae59",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API_Key",
+			"_postman_id": "972ae6a7-7dd7-4502-a813-602130f7c9f6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/getkey?firstName=Anna&lastName=Zubylo#TZHBTsMwDIbP5SlMhdRWjIQhDmjLKiHgwoFOggvHLEnXVG1aEldQTXt3mnQTnGI7v7/Yf9jlc/H08bl9gQrbJr9g8xGxSnE5nRFrFXIQFbdO4SYesLx5iMOFw7FRPop2nRzh4KOo5XavzQpu1z49eh09Cxk9QZlvmBnC6h7BWbGJK8TerSgV0tSOiKYbZNlwq4joWspr/kMbvXO0/hqUHekdWZLlKSGtNqR2cT69FYD/2Dn4QSiFRyGUc4CVgtf34g26Xa0EwrfGCmJfKUIh9vKrVHZiaJXBjNhp5jEtByNQdybN4BCIkybxayQZ8ZalCeutyhO4DnTi0Gqz1+WY/qEXMBipSm2UXMB9NkkTRkNXtg7MY7aeDTsvwejs1OSc/5Zf",
+					"protocol": "https",
+					"host": [
+						"iezapt5vu6",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"test",
+						"getkey"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Anna"
+						},
+						{
+							"key": "lastName",
+							"value": "Zubylo"
+						}
+					],
+					"hash": "TZHBTsMwDIbP5SlMhdRWjIQhDmjLKiHgwoFOggvHLEnXVG1aEldQTXt3mnQTnGI7v7/Yf9jlc/H08bl9gQrbJr9g8xGxSnE5nRFrFXIQFbdO4SYesLx5iMOFw7FRPop2nRzh4KOo5XavzQpu1z49eh09Cxk9QZlvmBnC6h7BWbGJK8TerSgV0tSOiKYbZNlwq4joWspr/kMbvXO0/hqUHekdWZLlKSGtNqR2cT69FYD/2Dn4QSiFRyGUc4CVgtf34g26Xa0EwrfGCmJfKUIh9vKrVHZiaJXBjNhp5jEtByNQdybN4BCIkybxayQZ8ZalCeutyhO4DnTi0Gqz1+WY/qEXMBipSm2UXMB9NkkTRkNXtg7MY7aeDTsvwejs1OSc/5Zf"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Steps 1-6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ef069d4-7328-4bb5-b8a7-f83b65ba1d26",
+						"exec": [
+							"pm.test(\"Body matches string - 2022-06\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"2022-06\");",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Verify id, birthdate, phone, appointmant_date, name, lastName, firstName, address, street, city, state, zip\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[jsonData.length-1].id).to.eql(\"SR19760827202206208364\");",
+							"    pm.expect(jsonData[jsonData.length-1].birthdate).to.eql(\"1976-08-27\");",
+							"    pm.expect(jsonData[jsonData.length-1].phone).to.eql(\"347-555-9876\");",
+							"    pm.expect(jsonData[jsonData.length-1].appointment_date).to.eql(\"2022-06-20\");",
+							"    pm.expect(jsonData[jsonData.length-1].lastName).to.eql(\"Rogers\");",
+							"    pm.expect(jsonData[jsonData.length-1].firstName).to.eql(\"Steve\");",
+							"    pm.expect(jsonData[jsonData.length-1].street).to.eql(\"45 W 45th St\");",
+							"    pm.expect(jsonData[jsonData.length-1].city).to.eql(\"New York\");",
+							"    pm.expect(jsonData[jsonData.length-1].state).to.eql(\"NY\");",
+							"    pm.expect(jsonData[jsonData.length-1].zip).to.eql(\"10036\");",
+							"",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							"pm.test(\"Verify id form\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    for (var i = 0; i < jsonData.length; i++) {",
+							"        var id = jsonData[i].id;",
+							"        pm.expect(id.length).to.eql(24);",
+							"        var firstInitial = id.charAt(0);",
+							"        var lastInitial = id.charAt(1);",
+							"        var birthYear = id.substring(2, 6);",
+							"        var birthMonth = id.substring(6, 8);",
+							"        var birthDay = id.substring(8, 10);",
+							"        var appointmentYear = id.substring(10, 14);",
+							"        var appointmentMonth = id.substring(14, 16);",
+							"        var appointmentDay = id.substring(16, 18);",
+							"        var randomDigits = id.substring(18, 22);",
+							"        pm.expect(firstInitial).to.be.a(\"string\");",
+							"        pm.expect(lastInitial).to.be.a(\"string\");",
+							"        pm.expect(parseInt(birthYear)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(birthMonth)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(birthDay)).to.be.a(\"number\");",
+							"        m.expect(parseInt(birthDay)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(appointmentYear)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(appointmentMonth)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(appointmentDay)).to.be.a(\"number\");",
+							"        pm.expect(parseInt(randomDigits)).to.be.a(\"number\")}});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response should have correct ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.equal(\"SR19760827202206208364\");",
+							"});",
+							"",
+							"pm.test(\"Response should have updated patient data\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name.firstName).to.equal(\"Tester\");",
+							"    pm.expect(jsonData.name.lastName).to.equal(\"Awesome\");",
+							"    pm.expect(jsonData.address.street).to.equal(\"123 Main St\");",
+							"    pm.expect(jsonData.address.city).to.equal(\"New York\");",
+							"    pm.expect(jsonData.address.state).to.equal(\"NY\");",
+							"    pm.expect(jsonData.address.zip).to.equal(\"10001\");",
+							"});",
+							"",
+							"",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"_postman_id": "724d5ea7-a515-4142-a741-91a77d2178cb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "0131302520124111420230209"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/patient?api_key=0131302520124111420230209",
+					"protocol": "https",
+					"host": [
+						"iezapt5vu6",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"test",
+						"patient"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "0131302520124111420230209",
+							"description": "0131302520124111420230209"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/update?api_key=0131302520124111420230209",
+			"_postman_id": "2f53255c-b56a-458d-ad0c-238d6d2e417a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/update?api_key=0131302520124111420230209",
+					"protocol": "https",
+					"host": [
+						"iezapt5vu6",
+						"execute-api",
+						"us-east-1",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"test",
+						"update"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "0131302520124111420230209"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
