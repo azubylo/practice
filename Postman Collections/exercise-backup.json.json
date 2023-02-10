@@ -1,13 +1,13 @@
 {
 	"info": {
 		"_postman_id": "f50e16d0-ac74-4065-8af2-c86a0ebeae59",
-		"name": "New Collection",
+		"name": "collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "API_Key",
-			"_postman_id": "972ae6a7-7dd7-4502-a813-602130f7c9f6",
+			"id": "972ae6a7-7dd7-4502-a813-602130f7c9f6",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -137,7 +137,7 @@
 					}
 				}
 			],
-			"_postman_id": "724d5ea7-a515-4142-a741-91a77d2178cb",
+			"id": "724d5ea7-a515-4142-a741-91a77d2178cb",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -177,7 +177,7 @@
 		},
 		{
 			"name": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/update?api_key=0131302520124111420230209",
-			"_postman_id": "2f53255c-b56a-458d-ad0c-238d6d2e417a",
+			"id": "2f53255c-b56a-458d-ad0c-238d6d2e417a",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
