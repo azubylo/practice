@@ -182,11 +182,28 @@
 				"disableBodyPruning": true
 			},
 			"request": {
-				"method": "PATCH",
-				"header": [],
+				"auth": {
+					"type": "oauth2",
+					"oauth2": {
+						"accessTokenUrl": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/patient",
+						"authUrl": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/patient",
+						"useBrowser": true,
+						"redirect_uri": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/patient",
+						"tokenName": "apikey",
+						"addTokenTo": "header"
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "0131302520124111420230209",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\n\"id\": \"SR19760827202206208364\",\n\n\"name\": {\n\"firstName\": \"Tester\",\n\"lastName\": \"First\"\n},\n\"address\": {\n\"street\": \"Get\",\n\"city\": \"Elgin\",\n\"state\": \"IL\",\n\"zip\": \"60124\"\n}\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -194,7 +211,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/update?api_key=0131302520124111420230209",
+					"raw": "https://iezapt5vu6.execute-api.us-east-1.amazonaws.com/test/patient?api_key=0131302520124111420230209",
 					"protocol": "https",
 					"host": [
 						"iezapt5vu6",
@@ -205,7 +222,7 @@
 					],
 					"path": [
 						"test",
-						"update"
+						"patient"
 					],
 					"query": [
 						{
